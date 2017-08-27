@@ -1,0 +1,99 @@
+/* Pour pouvoir utiliser une hauteur (height) ou une hauteur minimale
+   (min-height) sur un bloc, il faut que son parent direct ait lui-même une
+   hauteur déterminée (donc toute valeur de height sauf "auto": hauteur en
+   pixels, em, autres unités...).
+   Si la hauteur du parent est en pourcentage, elle se réfère alors à la
+   hauteur du «grand-père», et ainsi de suite.
+   Pour pouvoir utiliser un "min-height: 100%" sur div#global, il nous faut:
+   - un parent (body) en "height: 100%";
+   - le parent de body également en "height: 100%". */
+
+html,
+body {
+    height: 100%;
+}
+
+
+/* Titre du blog */
+
+#titreBlog {
+    text-align: center;
+}
+
+.signature {
+    color: slategrey;
+}
+
+h1 {
+    color: #337ab7;
+}
+
+
+/* Généralités */
+
+body {
+    color: #333534;
+    background: #337ab7;
+    font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
+}
+
+.global {
+    min-height: 100%;
+    /* Voir commentaire sur html et body plus haut */
+    background: #bfbfbf;
+    width: 70%;
+    margin: auto;
+    /* Permet de centrer la div */
+    text-align: justify;
+    padding: 5px 20px;
+}
+
+.titreEpisode {
+    margin-bottom: 5px;
+}
+
+
+/* Contenu du gabarit */
+
+#contenu {
+    margin-bottom: 30px;
+}
+
+#titreCommentaires {
+    font-size: 115%;
+}
+
+
+/* Signalement des commentaires */
+
+.signal {
+    padding-right: 20px;
+}
+
+
+/* Formulaire de contact */
+
+.form-control {
+    width: 17%;
+}
+
+textarea.form-control {
+    width: 50%;
+}
+
+.btn-default {
+    color: whitesmoke !important;
+    background-color: #7cb342 !important;
+    border-color: #33691e !important;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: #bfbfbf;
+    width: 70%;
+    margin: auto;
+    height: 150px;
+    padding-left: 50px;
+}
