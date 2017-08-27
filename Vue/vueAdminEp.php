@@ -94,6 +94,7 @@
             <th>Modification</th>
         </thead>
         <tbody>
+            <?php foreach ($episodes as $episode):?>
             <tr>
                 <td>
                     <?= $episode['ep_id'] ?>
@@ -114,12 +115,14 @@
 
                     --
 
-                    <a href="<?= " index.php?action=delete " ?>" class="button delete" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cet épisode ?'));">
-                        <button type="button" class="btn btn-danger btn-xs" title="Supprimer"><span class="glyphicon glyphicon-trash">X</span></button>
-                    </a>-
+                    <form method="post" action="index.php?action=delete">
+                        <input type="hidden" name="id" value="<?= $episode['ep_id'] ?>" />
+                        <button type="submit" class="btn btn-danger btn-xs" title="Supprimer"><span class="glyphicon glyphicon-trash">X</span></button>
+                    </form>
 
                 </td>
             </tr>
+            <?php endforeach; ?>
         </tbody>
     </table><br>
 

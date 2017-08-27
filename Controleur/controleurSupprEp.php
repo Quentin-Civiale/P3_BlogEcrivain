@@ -13,8 +13,9 @@ class ControleurSupprEp {
 
   // Affiche les épisodes
   public function episode() {
+    $episodes = $this->episode->getEpisodes();
     $vue = new Vue("AdminEp");
-    $vue->generer(array('episode'));
+    $vue->generer(array('episodes' => $episodes));
   }
 
   // Supprime un épisode

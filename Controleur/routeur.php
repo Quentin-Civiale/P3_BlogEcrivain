@@ -39,7 +39,64 @@ class Routeur {
   public function routerRequete() {
     try {
       if (isset($_GET['action'])) {
-         if ($_GET['action'] == 'episode') {
+          
+          switch ($_GET['action']) {
+                case 'episode':
+                    $idEpisode = intval($this->getParametre($_GET, 'id'));
+                    if ($idEpisode != 0) {
+                        $this->ctrlEpisodeDetail->episodeDetail($idEpisode);
+                    } else {
+                        throw new Exception("Identifiant de l'épisode non valide");
+                    }
+                    break;
+                  
+                case 'commenter':
+                    $auteur = $this->getParametre($_POST, 'auteur');
+                    $contenu = $this->getParametre($_POST, 'contenu');
+                    $idEpisode = $this->getParametre($_POST, 'id');
+                    $this->ctrlEpisodeDetail->commenter($auteur, $contenu, $idEpisode);
+                    break;
+                case 'editer':
+                    $episodeNb = $this->getParametre($_POST, 'episodeNb');
+                    $titre = $this->getParametre($_POST, 'titre');
+                    $contenu = $this->getParametre($_POST, 'contenu');
+                    $this->ctrlEditeur->editer($episodeNb, $titre, $contenu);
+                    break;
+                case 'connexion':
+                    $login = $this->getParametre($_POST, 'login');
+                    $pass = $this->getParametre($_POST, 'pass');
+                    $this->ctrlUser->connecte($login, $pass);
+                    break;
+                case 'formulaire':
+                    $this->ctrlUser->formulaire();
+                    break;
+                case 'Episodes':
+                    $this->ctrlContact->contact();
+                    break;
+                case 'contact':
+                    $this->ctrlContact->contact();
+                    break;
+                case 'adminEp':
+                  echo "episode";
+                    $this->ctrlAdminEp->episode();
+                    break;
+                case 'adminComm':
+                    $this->ctrlAdminComm->commentaire();
+                    break;
+                case 'delete':
+                    $idEpisode = $this->getParametre($_POST, 'id');
+                    $this->ctrlSupprEp->delete($idEpisode);
+                    break;
+                case 'editeur':
+                    $this->ctrlEditeur->editeur();
+                    break;
+                
+              default:
+                  throw new Exception("Action non valide");
+                  break;
+          }
+          
+         /*if ($_GET['action'] == 'episode') {
             $idEpisode = intval($this->getParametre($_GET, 'id'));
             if ($idEpisode != 0) {
                 $this->ctrlEpisodeDetail->episodeDetail($idEpisode);
@@ -85,11 +142,11 @@ class Routeur {
           else if ($_GET['action'] == 'editeur') {
               $this->ctrlEditeur->editeur();
             }
-          /*else if ($_GET['action'] == 'signal') {
+          else if ($_GET['action'] == 'signal') {
               $this->ctrlSignal->signal();
-            }*/
+            }
         else
-          throw new Exception("Action non valide");
+          throw new Exception("Action non valide");*/
       }
       else {  // aucune action définie : affichage de l'accueil
         $this->ctrlAccueil->accueil();
