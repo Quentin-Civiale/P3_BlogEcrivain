@@ -33,6 +33,13 @@ class Episode extends Modele {
     $this->executerRequete($sql, array($episodeNb, $titre, $date, $contenu)); 
   }
     
+  // Modifie un épisode dans la bdd
+  public function modifEpisode($idEpisode, $titre, $contenu) {
+    $sql = "UPDATE episodes SET title='$titre', content='$contenu' WHERE id='$idEpisode'";
+    $episodes = $this->executerRequete($sql);
+    echo "Episode modifié";
+    }
+    
   // Supprimer un épisode de la bdd
   public function delete($idEpisode){
       $sql = 'DELETE FROM episodes WHERE id='.$idEpisode;

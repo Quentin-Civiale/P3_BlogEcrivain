@@ -3,7 +3,7 @@
 require_once 'Modele/episode.php';
 require_once 'Vue/vue.php';
 
-class ControleurEditeur {
+class ControleurModifEp {
 
   private $episode;
 
@@ -18,17 +18,18 @@ class ControleurEditeur {
     $vue->generer(array('episodes' => $episodes));
   }
 
-  // Ajoute un épisode
-  public function editer($episodeNb, $titre, $contenu) {
+  // Modifie un épisode
+  public function modifEpisode($idEpisode, $titre, $contenu) {
     // Sauvegarde de l'épisode
-    $this->episode->ajouterEpisode($episodeNb, $titre, $contenu); 
+    $this->episode->modifEpisode($idEpisode, $titre, $contenu); 
     // Actualisation de l'affichage de l'épisode
     $this->episode();
   }
     
   // Affiche l'éditeur
-  public function editeur() {
-    $vue = new Vue("Editeur");
-    $vue->generer(array('editeur'));
+  public function editeurModif($episodeId) {
+    $episode = $this->episode->getEpisode($episodeId);
+    $vue = new Vue("ModifEp");
+    $vue->generer(array('modifEp' => $episode));
   }
 }

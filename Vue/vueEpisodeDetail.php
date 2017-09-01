@@ -49,9 +49,10 @@
 </p>
 
 <div class="signal">
-    <a href="index.php?action=">
-        <button type="report" class="btn btn-danger btn-xs" title="Signaler ce commentaire"><strong>Signaler ce commentaire </strong><span class="glyphicon glyphicon-alert"></span></button>
-    </a>
+    <form method="post" action="index.php?action=signalement" onclick="return(confirm('Êtes-vous sûr de vouloir signaler ce commentaire ?'))">
+        <input type="hidden" name="id" value="<?= $commentaire['com_id'] ?>" />
+        <button type="submit" class="btn btn-danger btn-xs" title="Signaler"><span class="glyphicon glyphicon-alert">Signaler ce commentaire </span></button>
+    </form>
 </div>
 
 <hr />

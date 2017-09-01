@@ -15,13 +15,15 @@
 
     <section class="col-lg-offset-3">
         <div class="edit">
-            <h3>Ecrire un nouvel épisode</h3>
+            <h3>Modifier l'épisode</h3>
 
-            <form method="post" action="index.php?action=editer">
-                <p>Numéro de l'épisode : <input type="text" id="episodeNb" name="episodeNb" /> Titre de l'épisode : <input type="text" id="titre" name="titre" /></p>
+            <form method="post" action="index.php?action=modifEp">
+                <input type="hidden" name="id" value="<?= $modifEp['ep_id'] ?>">
+                <p>Titre de l'épisode : <input type="text" id="titre" name="titre" value="<?= $modifEp['ep_titre'] ?>" />
+                </p>
                 <br/>
-                <textarea id="txtEpisode" name="contenu" style="width:80%;height:350px;"></textarea><br/>
-                <button type="submit" class="btn btn-default" value="Publier"><strong>Poster votre épisode </strong><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+                <textarea id="txtEpisode" name="contenu" style="width:80%;height:350px;"><?= $modifEp['ep_contenu'] ?></textarea><br/>
+                <button type="submit" class="btn btn-default" value="Enregistrer la modification"><strong>Enregistrer la modification </strong><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
             </form>
 
         </div>
