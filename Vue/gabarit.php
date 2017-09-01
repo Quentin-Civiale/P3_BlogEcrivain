@@ -13,10 +13,15 @@
 <body>
     <div class="global">
         <header>
+
+            <!--<p>Le nouveau roman de Jean Forteroche sous forme de blog !</p>-->
+
+            <?php if(!($_SESSION['Auth'])){ ?>
+
             <a href="index.php">
                 <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
             </a>
-            <!--<p>Le nouveau roman de Jean Forteroche sous forme de blog !</p>-->
+
             <div class="row">
                 <div class="col-lg-12">
                     <nav>
@@ -45,6 +50,43 @@
             <div class="col-lg-offset-2 col-lg-2">
                 <a href="index.php?action=formulaire"><button type="button" class="btn btn-danger" title="Connexion"><span class="glyphicon glyphicon-log-in"></span> Connexion</button></a>
             </div>
+
+
+
+            <?php }
+
+
+                    else { ?>
+
+            <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
+
+            <p>Administration du site</p>
+
+            <hr/>
+
+            <div class="row">
+                <div class="col-lg-offset-4 col-lg-4">
+                    <nav>
+                        <ul class="nav nav-pills nav-justified">
+                            <li role="nav">
+                                <a href="<?= " index.php?action=adminEp " ?>" role="button">
+                                    <span class="glyphicon glyphicon-list" aria-hiden="true"></span> Episodes</a>
+                            </li>
+                            <li role="nav">
+                                <a href="<?= " index.php?action=adminComm " ?>" role="button">
+                                    <span class="glyphicon glyphicon-comment" aria-hiden="true"></span> Commentaires</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-lg-offset-2 col-lg-2">
+                    <a href="index.php?action=deconnexion" onclick="return(confirm('Êtes-vous sûr de vouloir vous déconnecter ?'))">
+                        <button type="button" class="btn btn-danger" title="Deconnexion"><span class="glyphicon glyphicon-log-out"></span> Deconnexion</button>
+                    </a>
+                </div>
+            </div>
+            <?php } ?>
 
         </header>
 
@@ -78,34 +120,3 @@
 </body>
 
 </html>
-
-<!--<header class="navigationbar">
-
-    <h1>Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <nav>
-                <ul class="nav nav-pills nav-justified">
-
-                    <li role="nav">
-                        <a href="index.php?p=home" role="button">
-                            <span class="glyphicon glyphicon-home" aria-hiden="true"></span> Accueil</a>
-                    </li>
-
-                    <li role="nav">
-                        <a href="index.php?p=View/episodes" role="button">
-                            <span class="glyphicon glyphicon-list" aria-hiden="true"></span> Episodes</a>
-                    </li>
-
-                    <li role="nav">
-                        <a href="index.php?p=View/contact" role="button">
-                            <span class="glyphicon glyphicon-envelope" aria-hiden="true"></span> Contact</a>
-                    </li>
-
-                </ul>
-            </nav>
-        </div>
-    </div>
-
-</header>-->

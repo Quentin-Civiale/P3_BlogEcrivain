@@ -17,6 +17,7 @@ class Users extends Modele {
             echo 'Mauvais identifiants';
         }
     }
+    
 }
 
 ?>
