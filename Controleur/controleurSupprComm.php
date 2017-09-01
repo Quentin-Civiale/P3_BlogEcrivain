@@ -3,7 +3,7 @@
 require_once 'Modele/commentaire.php';
 require_once 'Vue/vue.php';
 
-class ControleurAdminComm {
+class ControleurSupprComm {
 
   private $commentaire;
 
@@ -16,6 +16,13 @@ class ControleurAdminComm {
     $commentaires = $this->commentaire->getComm();
     $vue = new Vue("AdminComm");
     $vue->generer(array('commentaires' => $commentaires));
- 
+  }
+
+  // Supprime un commentaire
+  public function delete($idCommentaire) {
+    // Sauvegarde du commentaire
+    $this->commentaire->delete($idCommentaire); 
+    // Actualisation de l'affichage du commentaire
+    $this->commentaire();
   }
 }
