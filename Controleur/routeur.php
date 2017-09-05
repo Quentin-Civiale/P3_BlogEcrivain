@@ -129,19 +129,6 @@ class Routeur {
                         throw new Exception("Identifiant du commentaire non valide");
                     }
                     break;
-                /*case 'editeurModif':
-                   $editType = $this->getParametre($_POST, 'editType')
-                   $idObject = $this->getParametre($_POST, 'id');
-                    if (editType == "episode" && $idObject != 0) {
-                        $this->ctrlModifEp->editeurModif($idObject);
-                    } 
-                    else if (editType == "commentaire" && $idObject != 0) {
-                        $this->ctrlModifComm->editeurModif($idObject);
-                    } 
-                    else {
-                      throw new Exception("Identifiant de l'épisode non valide");
-                    }
-                    break;*/
                 case 'deleteEp':
                     $idEpisode = $this->getParametre($_POST, 'id');
                     $this->ctrlSupprEp->delete($idEpisode);
@@ -151,66 +138,15 @@ class Routeur {
                     $this->ctrlSupprComm->delete($idCommentaire);
                     break;
                 case 'signalement':
-                    $idCommentaire = $this->getParametre($_POST, 'id');
-                    $this->ctrlSignal->signal($idCommentaire);
+                    $idEpisode = $this->getParametre($_POST, 'idEp');
+                    $idCommentaire = $this->getParametre($_POST, 'idComm');
+                    $this->ctrlSignal->signal($idCommentaire, $idEpisode);
                     break;
                 
               default:
                   throw new Exception("Action non valide : ". $_GET['action']);
                   break;
           }
-          
-         /*if ($_GET['action'] == 'episode') {
-            $idEpisode = intval($this->getParametre($_GET, 'id'));
-            if ($idEpisode != 0) {
-                $this->ctrlEpisodeDetail->episodeDetail($idEpisode);
-            }
-                else
-                  throw new Exception("Identifiant de l'épisode non valide");
-          }
-          else if ($_GET['action'] == 'commenter') {
-              $auteur = $this->getParametre($_POST, 'auteur');
-              $contenu = $this->getParametre($_POST, 'contenu');
-              $idEpisode = $this->getParametre($_POST, 'id');
-              $this->ctrlEpisodeDetail->commenter($auteur, $contenu, $idEpisode);
-            }
-          else if ($_GET['action'] == 'editer') {
-              $episodeNb = $this->getParametre($_POST, 'episodeNb');
-              $titre = $this->getParametre($_POST, 'titre');
-              $contenu = $this->getParametre($_POST, 'contenu');
-              $this->ctrlEditeur->editer($episodeNb, $titre, $contenu);
-            }
-          else if ($_GET['action'] == 'connexion') {
-              $login = $this->getParametre($_POST, 'login');
-              $pass = $this->getParametre($_POST, 'pass');
-              $this->ctrlUser->connecte($login, $pass);
-            }
-          else if ($_GET['action'] == 'formulaire') {
-              $this->ctrlUser->formulaire();
-            }
-          else if ($_GET['action'] == 'Episodes') {
-              $this->ctrlEpisode->episode();
-            }
-          else if ($_GET['action'] == 'contact') {
-              $this->ctrlContact->contact();
-            }
-          else if ($_GET['action'] == 'adminEp') {
-              $this->ctrlAdminEp->episode();
-            }
-          else if ($_GET['action'] == 'adminComm') {
-              $this->ctrlAdminComm->commentaire();
-            }
-          else if ($_GET['action'] == 'delete') {
-              $this->ctrlSupprEp->delete();
-            }
-          else if ($_GET['action'] == 'editeur') {
-              $this->ctrlEditeur->editeur();
-            }
-          else if ($_GET['action'] == 'signal') {
-              $this->ctrlSignal->signal();
-            }
-        else
-          throw new Exception("Action non valide");*/
       }
       else {  // aucune action définie : affichage de l'accueil
         $this->ctrlAccueil->accueil();
