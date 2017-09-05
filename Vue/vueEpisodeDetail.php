@@ -1,70 +1,78 @@
 <?php $this->titre = "Jean Forteroche"; ?>
 
-<article>
-    <header>
-        <h1 class="titreEpisode">
-            Épisode
-            <?= $episode['ep_nb'] ?> :
+<a id="haut"></a>
+
+<article class="episode">
+    <h2 class="titreEpisode">
+        Épisode
+        <?= $episode['ep_nb'] ?> :
+            <h3>
                 <?= $episode['ep_titre'] ?>
-        </h1>
-        <time><?= $episode['ep_date'] ?></time>
-    </header>
+            </h3>
+    </h2>
+    Publié le <time><?= $episode['ep_date'] ?></time>
     <p>
         <?= $episode['ep_contenu'] ?>
     </p>
 </article>
 
-<hr />
-
-<header>
-    <h1 id="titreCommentaires">Commentaires sur l'Episode
-        <?= $episode['ep_nb'] ?>
-    </h1>
-</header>
-
-<hr />
 <br/>
 
-<form method="post" action="index.php?action=commenter">
-    <label for="exampleInputName2">Votre nom ou pseudo :</label> <input id="auteur" name="auteur" type="text" required />
-    <br/><br/>
-    <label for="exampleInputName2">Votre commentaire </label><br/>
-    <textarea id="txtCommentaire" name="contenu" style="width:80%;height:350px;" required></textarea><br/><br/>
-    <input type="hidden" name="id" value="<?= $episode['ep_id'] ?>" />
-    <button type="submit" class="btn btn-default" value="Publier"><strong>Poster votre commentaire </strong><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
-</form>
 
-<br/>
+<section class="banComment">
+    <h3 id="titreCommentaires"><span class="glyphicon glyphicon-comment" aria-hiden="true"></span> Commentaire de l'épisode
+        <?= $episode['ep_nb'] ?><br/></h3>
+</section>
+
+
+<div class="commentForm">
+    <form method="post" action="index.php?action=commenter">
+        <label for="exampleInputName2">Votre nom ou pseudo :</label> <input id="auteur" name="auteur" type="text" required />
+        <br/><br/>
+        <label for="exampleInputName2">Votre commentaire </label><br/>
+        <textarea id="txtCommentaire" name="contenu" style="width:80%;height:350px;" required></textarea><br/><br/>
+        <input type="hidden" name="id" value="<?= $episode['ep_id'] ?>" />
+        <button type="submit" class="btn btn-default" value="Publier"><strong>Poster votre commentaire </strong><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+    </form>
+</div>
+
 <hr/>
 
 <?php foreach ($commentaires as $commentaire): ?>
 
-<p>
-    <?= $commentaire['com_contenu'] ?>
-</p>
+<div class="blockquoteBorder">
+    <div class="blockquoteCite1">
+        <blockquote class="comment1">
 
-<p><cite>Publié le
+            <p>
+                <?= $commentaire['com_contenu'] ?>
+            </p>
+
+            <div class="publish"><cite>Publié le
             <?= $commentaire['com_date'] ?> <br/> par
                 <?= $commentaire['com_auteur'] ?></cite>
-</p>
+            </div>
 
-<div class="signal">
-    <form method="post" action="index.php?action=signalement" onclick="return(confirm('Êtes-vous sûr de vouloir signaler ce commentaire ?'))">
-        <input type="hidden" name="id" value="<?= $commentaire['com_id'] ?>" />
-        <button type="submit" class="btn btn-danger btn-xs" title="Signaler"><span class="glyphicon glyphicon-alert">Signaler ce commentaire </span></button>
-    </form>
+            <div class="col-lg-offset-10">
+                <div class="signal">
+                    <form method="post" action="index.php?action=signalement" onclick="return(confirm('Êtes-vous sûr de vouloir signaler ce commentaire ?'))">
+                        <input type="hidden" name="idComm" value="<?= $commentaire['com_id'] ?>" />
+                        <input type="hidden" name="idEp" value="<?= $episode['ep_id'] ?>" />
+                        <button type="submit" class="btn btn-danger btn-xs" title="Signaler"><span class="glyphicon glyphicon-alert"><strong> Signaler ce commentaire </strong></span></button>
+                    </form>
+                </div>
+            </div>
+
+        </blockquote>
+    </div>
 </div>
-
-<hr />
-
-<?php endforeach; ?>
 
 <br/>
 
+<?php endforeach; ?>
 
-<!--<form method="post" action="index.php?action=commenter">
-    <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" required /><br />
-    <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" required></textarea><br />
-    <input type="hidden" name="id" value="<?= $episode['ep_id'] ?>" />
-    <input type="submit" value="Commenter" />
-</form>-->
+<div class="buttonUp">
+    <a href="#haut" role="button" class="btn btn-primary btn-lg">
+        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+    </a>
+</div>

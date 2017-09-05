@@ -25,20 +25,15 @@
                     <?= $episode['ep_date'] ?>
                 </td>
                 <td>
-
                     <form method="post" action="index.php?action=editeurModifEp">
                         <input type="hidden" name="id" value="<?php echo $episode['ep_id']; ?>" />
-                        <button type="submit" class="btn btn-info btn-xs" title="Modifier"><span class="glyphicon glyphicon-edit">Modifier</span></button>
+                        <button type="submit" class="btn btn-info btn-xs" title="Modifier"><span class="glyphicon glyphicon-edit"> Modifier</span></button>
                     </form>
-
-
                     --
-
                     <form method="post" action="index.php?action=deleteEp" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cet épisode ?'))">
                         <input type="hidden" name="id" value="<?= $episode['ep_id'] ?>" />
-                        <button type="submit" class="btn btn-danger btn-xs" title="Supprimer"><span class="glyphicon glyphicon-trash">X</span></button>
+                        <button type="submit" class="btn btn-danger btn-xs" title="Supprimer"><span class="glyphicon glyphicon-trash"></span></button>
                     </form>
-
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -46,9 +41,8 @@
     </table><br>
 
 
-    <div class="col-lg-offset-5 col-lg-5">
-        <p><a href="index.php?action=editeur"><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ajouter un nouvel épisode</button></a></p>
+    <div class="col-lg-offset-5">
+        <a href="index.php?action=editeur"><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ajouter un nouvel épisode</button></a>
     </div>
-
 
 </section>

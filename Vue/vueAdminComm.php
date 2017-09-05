@@ -26,7 +26,7 @@
                 <td>
                     <?= $commentaire['com_contenu'] ?>
                 </td>
-                <td>
+                <td style="text-align:center">
                     <?= $commentaire['com_signal'] ?>
                 </td>
                 <td>
@@ -35,14 +35,12 @@
                 <td>
                     <form method="post" action="index.php?action=editeurModifComm">
                         <input type="hidden" name="id" value="<?php echo $commentaire['com_id']; ?>" />
-                        <button type="submit" class="btn btn-info btn-xs" title="Modifier"><span class="glyphicon glyphicon-edit">Modifier</span></button>
+                        <button type="submit" class="btn btn-info btn-xs" title="Modifier"><span class="glyphicon glyphicon-edit"> Modifier</span></button>
                     </form>
-
                     --
-
                     <form method="post" action="index.php?action=deleteComm" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'))">
                         <input type="hidden" name="id" value="<?= $commentaire['com_id'] ?>" />
-                        <button type="submit" class="btn btn-danger btn-xs" title="Supprimer"><span class="glyphicon glyphicon-trash">X</span></button>
+                        <button type="submit" class="btn btn-danger btn-xs" title="Supprimer"><span class="glyphicon glyphicon-trash"></span></button>
                     </form>
 
                 </td>

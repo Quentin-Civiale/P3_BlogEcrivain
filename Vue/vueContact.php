@@ -1,6 +1,5 @@
 <?php $this->titre = "Jean Forteroche"; ?>
 
-
 <section class="col-lg-offset-2">
     <?php if(array_key_exists('errors', $_SESSION)): ?>
     <div class="alert alert-danger">
