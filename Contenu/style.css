@@ -1,81 +1,152 @@
-/* Pour pouvoir utiliser une hauteur (height) ou une hauteur minimale
-   (min-height) sur un bloc, il faut que son parent direct ait lui-même une
-   hauteur déterminée (donc toute valeur de height sauf "auto": hauteur en
-   pixels, em, autres unités...).
-   Si la hauteur du parent est en pourcentage, elle se réfère alors à la
-   hauteur du «grand-père», et ainsi de suite.
-   Pour pouvoir utiliser un "min-height: 100%" sur div#global, il nous faut:
-   - un parent (body) en "height: 100%";
-   - le parent de body également en "height: 100%". */
+/* Titre */
 
-html,
-body {
-    height: 100%;
-}
-
-
-/* Titre du blog */
-
-#titreBlog {
-    text-align: center;
+h1 {
+    font-size: 4em !important;
+    color: whitesmoke !important;
+    padding-left: 25px;
 }
 
 .signature {
-    color: slategrey;
-}
-
-h1 {
-    color: #337ab7;
+    color: darkgrey;
 }
 
 
-/* Généralités */
+/* Barre de navigation */
 
-body {
-    color: #333534;
-    background: #337ab7;
-    font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
-}
-
-.global {
-    min-height: 100%;
-    /* Voir commentaire sur html et body plus haut */
-    background: #bfbfbf;
-    width: 70%;
-    margin: auto;
-    /* Permet de centrer la div */
-    text-align: justify;
-    padding: 5px 20px;
-}
-
-.titreEpisode {
-    margin-bottom: 5px;
+.navigationbar {
+    position: fixed;
+    width: 100%;
+    background-color: #337ab7;
+    z-index: 999;
 }
 
 
-/* Contenu du gabarit */
+/* Onglet */
 
-#contenu {
-    margin-bottom: 30px;
+.nav-pills>li.active a {
+    background-color: whitesmoke !important;
+    color: #337ab7 !important;
 }
 
-#titreCommentaires {
-    font-size: 115%;
+a {
+    color: whitesmoke !important;
+}
+
+a:hover {
+    color: #337ab7 !important;
+    background-color: whitesmoke !important;
+}
+
+.admin {
+    padding-left: 25px;
 }
 
 
-/* Signalement des commentaires */
+/* Bannière */
 
-.signal {
+.bannerImage {
+    min-height: 800px;
+    background-image: url('ChilkootLakePano.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Corps */
+
+section {
+    text-align: justify !important;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
     padding-right: 20px;
+}
+
+article {
+    text-align: justify !important;
+}
+
+
+/* Date publication */
+
+time {
+    font-weight: bold;
+}
+
+
+/* Episode */
+
+.col-lg-5,
+.col-lg-6 {
+    background-color: #bbdefb !important;
+    border-style: solid;
+    border-color: white;
+    border-width: 20px;
+}
+
+.episode {
+    text-align: justify;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+
+/* Partie Commentaire Blog */
+
+.banComment {
+    color: whitesmoke;
+    background-color: #337ab7;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 3px;
+}
+
+.commentForm {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.blockquoteBorder {
+    border: 1px solid black;
+    background-color: #e3f2fd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 250px;
+    margin-right: 150px;
+}
+
+.blockquoteCite1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+.comment1 {
+    border-left: 5px solid #01579b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+.publish {
+    font-style: italic;
+}
+
+.buttonUp {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 1500px;
+    padding-right: 200px;
 }
 
 
 /* Formulaire de contact */
-
-.form-control {
-    width: 17%;
-}
 
 textarea.form-control {
     width: 50%;
@@ -88,12 +159,39 @@ textarea.form-control {
 }
 
 
+/* Identification */
+
+.login1 {
+    color: whitesmoke;
+    background-color: #337ab7 !important;
+    display: inline-block;
+    padding: 50px;
+    margin-top: 50px;
+}
+
+.login2 {
+    color: black;
+}
+
+.connect,
+.log,
+.password {
+    color: black !important;
+}
+
+
+/* Formulaire Page Admin sur la même ligne*/
+
+form {
+    display: inline;
+}
+
+
 /* Footer */
 
 footer {
-    background-color: #bfbfbf;
-    width: 70%;
-    margin: auto;
+    background-color: #337ab7;
     height: 150px;
+    margin-top: 2750px;
     padding-left: 50px;
 }
