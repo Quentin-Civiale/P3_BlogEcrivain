@@ -15,13 +15,6 @@ class ControleurSignal {
     $this->episode = new Episode();
     $this->commentaire = new Commentaire();
   }
-
-  // Affiche les commentaires
-  /*public function commentaire() {
-    $commentaires = $this->commentaire->getComm();
-    $vue = new Vue("AdminComm");
-    $vue->generer(array('commentaires' => $commentaires));
-  }*/
     
     // Affiche les détails sur un épisode
   public function episodeDetail($idEpisode) {
