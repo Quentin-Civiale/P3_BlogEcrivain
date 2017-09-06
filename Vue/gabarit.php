@@ -29,7 +29,7 @@
         ?>
 
             <a href="index.php">
-                <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
+                <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">Blog par Jean Forteroche</small></h1>
             </a>
 
             <div class="row">
