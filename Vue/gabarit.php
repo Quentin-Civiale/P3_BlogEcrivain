@@ -21,76 +21,89 @@
 
         <?php if(!($_SESSION['Auth'])){ ?>
 
-        <a href="index.php">
-            <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
-        </a>
 
-        <div class="row">
-            <div class="col-lg-offset-1 col-lg-8">
-                <nav>
-                    <ul class="nav nav-pills nav-justified">
+        <?php
+          // On recupere l'URL de la page pour ensuite affecter class = "active" aux liens de nav
+          $page = $_SERVER['REQUEST_URI'];
+          $page = str_replace("/P3/", "",$page);
+        ?>
 
-                        <li role="nav">
-                            <a href="index.php" role="button">
-                                <span class="glyphicon glyphicon-home" aria-hiden="true"></span> Accueil</a>
-                        </li>
+            <a href="index.php">
+                <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
+            </a>
 
-                        <li role="nav">
-                            <a href="<?= " index.php?action=Episodes " ?>">
-                                <span class="glyphicon glyphicon-list" aria-hiden="true"></span> Episodes</a>
-                        </li>
+            <div class="row">
+                <div class="col-lg-offset-1 col-lg-8">
+                    <nav>
+                        <ul class="nav nav-pills nav-justified">
 
-                        <li role="nav">
-                            <a href="<?= " index.php?action=contact " ?>" role="button">
-                                <span class="glyphicon glyphicon-envelope" aria-hiden="true"></span> Contact</a>
-                        </li>
+                            <li <?php if($page=="index.php" ){echo 'class="active"';} ?> role="nav">
+                                <a href="index.php" role="button">
+                                    <span class="glyphicon glyphicon-home" aria-hiden="true"></span> Accueil</a>
+                            </li>
 
-                    </ul>
-                </nav>
+                            <li <?php if($page=="index.php?action=Episodes" ) /*xor ($page==" index.php?action=episode&id=" )*/{echo 'class="active"';} ?>role="nav">
+                                <a href="<?= " index.php?action=Episodes " ?>">
+                                    <span class="glyphicon glyphicon-list" aria-hiden="true"></span> Episodes</a>
+                            </li>
+
+                            <li <?php if($page=="index.php?action=contact" ){echo 'class="active"';} ?>role="nav">
+                                <a href="<?= " index.php?action=contact " ?>" role="button">
+                                    <span class="glyphicon glyphicon-envelope" aria-hiden="true"></span> Contact</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <a href="index.php?action=formulaire"><button type="button" class="btn btn-success" title="Connexion"><span class="glyphicon glyphicon-log-in"></span> Connexion</button></a>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <a href="index.php?action=formulaire"><button type="button" class="btn btn-success" title="Connexion"><span class="glyphicon glyphicon-log-in"></span> Connexion</button></a>
-            </div>
-        </div>
 
 
 
 
 
-        <?php }
+            <?php }
 
 
                     else { ?>
 
-        <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
+            <?php
+              // On recupere l'URL de la page pour ensuite affecter class = "active" aux liens de nav
+              $page = $_SERVER['REQUEST_URI'];
+              $page = str_replace("/P3/", "",$page);
+            ?>
 
-        <div class="admin">
-            <h2>Administration du site</h2>
-        </div>
+                <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
 
-        <div class="row">
-            <div class="col-lg-offset-4 col-lg-4">
-                <nav>
-                    <ul class="nav nav-pills nav-justified">
-                        <li role="nav">
-                            <a href="<?= " index.php?action=adminEp " ?>" role="button">
-                                <span class="glyphicon glyphicon-list" aria-hiden="true"></span> Episodes</a>
-                        </li>
-                        <li role="nav">
-                            <a href="<?= " index.php?action=adminComm " ?>" role="button">
-                                <span class="glyphicon glyphicon-comment" aria-hiden="true"></span> Commentaires</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                <div class="admin">
+                    <h2>Administration du site</h2>
+                </div>
 
-            <div class="col-lg-offset-2 col-lg-2">
-                <a href="index.php?action=deconnexion" onclick="return(confirm('Êtes-vous sûr de vouloir vous déconnecter ?'))">
-                    <button type="button" class="btn btn-danger" title="Deconnexion"><span class="glyphicon glyphicon-log-out"></span> Deconnexion</button>
-                </a>
-            </div>
-        </div>
-        <?php } ?>
+                <div class="row">
+                    <div class="col-lg-offset-4 col-lg-4">
+                        <nav>
+                            <ul class="nav nav-pills nav-justified">
+                                <li <?php if($page=="index.php?action=adminEp" ){echo 'class="active"';} ?> role="nav">
+                                    <a href="<?= " index.php?action=adminEp " ?>" role="button">
+                                        <span class="glyphicon glyphicon-list" aria-hiden="true"></span> Episodes</a>
+                                </li>
+                                <li <?php if($page=="index.php?action=adminComm" ){echo 'class="active"';} ?> role="nav">
+                                    <a href="<?= " index.php?action=adminComm " ?>" role="button">
+                                        <span class="glyphicon glyphicon-comment" aria-hiden="true"></span> Commentaires</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="col-lg-offset-2 col-lg-2">
+                        <a href="index.php?action=deconnexion" onclick="return(confirm('Êtes-vous sûr de vouloir vous déconnecter ?'))">
+                            <button type="button" class="btn btn-danger" title="Deconnexion"><span class="glyphicon glyphicon-log-out"></span> Deconnexion</button>
+                        </a>
+                    </div>
+                </div>
+                <?php } ?>
 
     </header>
 
