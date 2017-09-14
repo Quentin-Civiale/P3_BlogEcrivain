@@ -18,14 +18,14 @@ if(!empty($errors)){
     session_start();
     $_SESSION['errors'] = $errors;
     $_SESSION['inputs'] = $_POST;
-    header('Location: http://localhost/P3/Public/index.php?p=View/contact');
+    header('Location: http://www.projet3.quentin-civiale.fr/index.php?action=contact');
 }
 else{
     $_SESSION['success'] = 1;
     $message = $_POST['message'];
     $headers = 'FROM: ';
     mail('quentin.civiale@gmail.com', 'Formulaire de contact', $message, $headers);
-    header('Location: http://localhost/P3/Public/index.php?p=View/contact');
+    header('Location: http://www.projet3.quentin-civiale.fr/index.php?action=contact');
 }
 
 ?>
