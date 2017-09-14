@@ -29,7 +29,7 @@
         ?>
 
             <a href="index.php">
-                <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">Blog par Jean Forteroche</small></h1>
+                <h1 id="titreBlog">Billet simple pour l'Alaska <small class="signature">par Jean Forteroche</small></h1>
             </a>
 
             <div class="row">
@@ -42,12 +42,12 @@
                                     <span class="glyphicon glyphicon-home" aria-hiden="true"></span> Accueil</a>
                             </li>
 
-                            <li <?php if($page=="index.php?action=Episodes" ) /*xor ($page==" index.php?action=episode&id=" )*/{echo 'class="active"';} ?>role="nav">
+                            <li <?php if($page=="index.php?action=Episodes" ){echo 'class="active"';} ?> role="nav">
                                 <a href="<?= " index.php?action=Episodes " ?>">
                                     <span class="glyphicon glyphicon-list" aria-hiden="true"></span> Episodes</a>
                             </li>
 
-                            <li <?php if($page=="index.php?action=contact" ){echo 'class="active"';} ?>role="nav">
+                            <li <?php if($page=="index.php?action=contact" ){echo 'class="active"';} ?> role="nav">
                                 <a href="<?= " index.php?action=contact " ?>" role="button">
                                     <span class="glyphicon glyphicon-envelope" aria-hiden="true"></span> Contact</a>
                             </li>
