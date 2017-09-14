@@ -5,13 +5,10 @@ require_once 'Controleur/controleurEpisode.php';
 require_once 'Controleur/controleurEpisodeDetail.php';
 require_once 'Controleur/controleurContact.php';
 require_once 'Controleur/controleurUser.php';
-require_once 'Controleur/controleurAdminEp.php';
-require_once 'Controleur/controleurAdminComm.php';
+require_once 'Controleur/controleurAdmin.php';
 require_once 'Controleur/controleurEditeur.php';
-require_once 'Controleur/controleurSupprEp.php';
-require_once 'Controleur/controleurSupprComm.php';
-require_once 'Controleur/controleurModifEp.php';
-require_once 'Controleur/controleurModifComm.php';
+require_once 'Controleur/controleurSuppr.php';
+require_once 'Controleur/controleurModif.php';
 require_once 'Controleur/controleurSignal.php';
 require_once 'Vue/vue.php';
 
@@ -22,13 +19,10 @@ class Routeur {
   private $ctrlEpisodeDetail;
   private $ctrlContact;
   private $ctrlUser;
-  private $ctrlAdminEp;
-  private $ctrlAdminComm;
+  private $ctrlAdmin;
   private $ctrlEditeur;
-  private $ctrlSupprEp;
-  private $ctrlSupprComm;
-  private $ctrlModifEp;
-  private $ctrlModifComm;
+  private $ctrlSuppr;
+  private $ctrlModif;
   private $ctrlSignal;
 
   public function __construct() {
@@ -37,13 +31,10 @@ class Routeur {
     $this->ctrlEpisodeDetail = new ControleurEpisodeDetail();
     $this->ctrlContact = new ControleurContact();
     $this->ctrlUser = new ControleurUser();
-    $this->ctrlAdminEp = new ControleurAdminEp();
-    $this->ctrlAdminComm = new ControleurAdminComm();
+    $this->ctrlAdmin = new ControleurAdmin();
     $this->ctrlEditeur = new ControleurEditeur();
-    $this->ctrlSupprEp = new ControleurSupprEp();
-    $this->ctrlSupprComm = new ControleurSupprComm();
-    $this->ctrlModifEp = new ControleurModifEp();
-    $this->ctrlModifComm = new ControleurModifComm();
+    $this->ctrlSuppr = new ControleurSuppr();
+    $this->ctrlModif = new ControleurModif();
     $this->ctrlSignal= new ControleurSignal();
   }
 
@@ -94,21 +85,21 @@ class Routeur {
                     $this->ctrlContact->contact();
                     break;
                 case 'adminEp':
-                    $this->ctrlAdminEp->episode();
+                    $this->ctrlAdmin->episode();
                     break;
                 case 'adminComm':
-                    $this->ctrlAdminComm->commentaire();
+                    $this->ctrlAdmin->commentaire();
                     break;
                 case 'modifEp':
                     $titre = $this->getParametre($_POST, 'titre');
                     $contenu = $this->getParametre($_POST, 'contenu');
                     $idEpisode = $this->getParametre($_POST, 'id');
-                    $this->ctrlModifEp->modifEpisode($idEpisode, $titre, $contenu);
+                    $this->ctrlModif->modifEpisode($idEpisode, $titre, $contenu);
                     break;
                 case 'editeurModifEp':
                    $idEpisode = $this->getParametre($_POST, 'id');
                     if ($idEpisode != 0) {
-                        $this->ctrlModifEp->editeurModif($idEpisode);
+                        $this->ctrlModif->editeurModifEp($idEpisode);
                     } else {
                         throw new Exception("Identifiant de l'épisode non valide");
                     }
@@ -119,23 +110,23 @@ class Routeur {
                     $epId = $this->getParametre($_POST, 'epId');
                     $signal = $this->getParametre($_POST, 'signal');
                     $idCommentaire = $this->getParametre($_POST, 'id');
-                    $this->ctrlModifComm->modifCommentaire($idCommentaire, $auteur, $contenu, $signal, $epId);
+                    $this->ctrlModif->modifCommentaire($idCommentaire, $auteur, $contenu, $signal, $epId);
                     break;
                 case 'editeurModifComm':
                    $idCommentaire = $this->getParametre($_POST, 'id');
                     if ($idCommentaire != 0) {
-                        $this->ctrlModifComm->editeurModif($idCommentaire);
+                        $this->ctrlModif->editeurModifComm($idCommentaire);
                     } else {
                         throw new Exception("Identifiant du commentaire non valide");
                     }
                     break;
                 case 'deleteEp':
                     $idEpisode = $this->getParametre($_POST, 'id');
-                    $this->ctrlSupprEp->delete($idEpisode);
+                    $this->ctrlSuppr->deleteEp($idEpisode);
                     break;
                 case 'deleteComm':
                     $idCommentaire = $this->getParametre($_POST, 'id');
-                    $this->ctrlSupprComm->delete($idCommentaire);
+                    $this->ctrlSuppr->deleteComm($idCommentaire);
                     break;
                 case 'signalement':
                     $idEpisode = $this->getParametre($_POST, 'idEp');
